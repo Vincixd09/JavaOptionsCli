@@ -29,6 +29,7 @@ func DeleteVersion() {
 
 	java := pathR + "/java"
 	javac := pathR + "/javac"
+	jar := pathR + "/jar"
 
 	err = u.RunCommandInteractive("sudo", "update-alternatives", "--remove", "java", java)
 	if err != nil {
@@ -37,6 +38,12 @@ func DeleteVersion() {
 	}
 
 	err = u.RunCommandInteractive("sudo", "update-alternatives", "--remove", "javac", javac)
+	if err != nil {
+		color.Error.Println("Error: ", err)
+		return
+	}
+
+	err = u.RunCommandInteractive("sudo", "update-alternatives", "--remove", "jar", jar)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return

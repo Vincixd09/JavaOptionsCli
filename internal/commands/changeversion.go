@@ -24,5 +24,11 @@ func ChangeVersion() {
 		return
 	}
 
+	err = u.RunCommandInteractive("sudo", "update-alternatives", "--config", "jar")
+	if err != nil {
+		color.Error.Println("Error: ", err)
+		return
+	}
+
 	fmt.Print("\033[3;J\033[H\033[2J")
 }

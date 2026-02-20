@@ -28,6 +28,12 @@ func ListVersion() {
 		return
 	}
 
+	color.Info.Prompt("Showing jar versions")
+	err = u.RunCommandInteractive("update-alternatives", "--list", "jar")
+	if err != nil {
+		color.Error.Println("Error: ", err)
+		return
+	}
 	fmt.Print("\n")
 	color.Info.Tips("Press Enter to continue...")
 	fmt.Scanln()

@@ -52,6 +52,7 @@ func NewJava() {
 
 	java := pathR + "/java"
 	javac := pathR + "/javac"
+	jar := pathR + "/jar"
 
 	err = u.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/java", "java", java, version)
 	if err != nil {
@@ -60,6 +61,12 @@ func NewJava() {
 	}
 
 	err = u.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/javac", "javac", javac, version)
+	if err != nil {
+		color.Error.Println("Error: ", err)
+		return
+	}
+
+	err = u.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/jar", "jar", jar, version)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return

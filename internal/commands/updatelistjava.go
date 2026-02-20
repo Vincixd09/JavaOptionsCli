@@ -24,6 +24,12 @@ func UpdateList() {
 		color.Error.Println("Error: ", err)
 		return
 	}
+
+	err = u.RunCommandInteractive("sudo", "update-alternatives", "--auto", "jar")
+	if err != nil {
+		color.Error.Println("Error: ", err)
+		return
+	}
 	time.Sleep(1 * time.Second)
 	fmt.Print("\033[3;J\033[H\033[2J")
 }
