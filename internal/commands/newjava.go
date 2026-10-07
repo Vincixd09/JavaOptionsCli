@@ -6,7 +6,6 @@ import (
 	"os"
 	"time"
 
-	u "github.com/Vincixd09/go-utils"
 	"github.com/gookit/color"
 )
 
@@ -27,7 +26,7 @@ func NewJava() {
 	helps.ExtracFile(tar)
 	maches := helps.ExtractNameDir()
 	pathF := "/opt/java/" + maches[0]
-	err = u.RunCommandInteractive("sudo", "mv", maches[0], pathF)
+	err = helps.RunCommandInteractive("sudo", "mv", maches[0], pathF)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
@@ -35,7 +34,7 @@ func NewJava() {
 	color.Info.Println("Tar decompress correctly")
 
 	fmt.Println("Here are your Java versions and their folders")
-	err = u.RunCommandWithOutput("lsd", "/opt/java")
+	err = helps.RunCommandWithOutput("lsd", "/opt/java")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
@@ -54,19 +53,19 @@ func NewJava() {
 	javac := pathR + "/javac"
 	jar := pathR + "/jar"
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/java", "java", java, version)
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/java", "java", java, version)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/javac", "javac", javac, version)
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/javac", "javac", javac, version)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/jar", "jar", jar, version)
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--install", "/usr/bin/jar", "jar", jar, version)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return

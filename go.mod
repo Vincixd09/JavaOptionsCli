@@ -3,7 +3,6 @@ module JavaOptionsCli
 go 1.25.5
 
 require (
-	github.com/Vincixd09/go-utils v0.0.0-20260208052359-cc872b568593
 	github.com/gookit/color v1.6.0
 	github.com/pterm/pterm v0.12.82
 )

@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 
 	"github.com/gookit/color"
@@ -87,4 +88,21 @@ func ExtractNameDir() []string {
 	}
 
 	return matches
+}
+
+func RunCommandInteractive(command string, args ...string) error {
+	fmt.Print("\n")
+	cmd := exec.Command(command, args...)
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
+}
+
+func RunCommandWithOutput(command string, args ...string) error {
+	fmt.Print("\n")
+	cmd := exec.Command(command, args...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	return cmd.Run()
 }

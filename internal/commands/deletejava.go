@@ -1,10 +1,10 @@
 package commands
 
 import (
+	"JavaOptionsCli/internal/helps"
 	"fmt"
 	"time"
 
-	u "github.com/Vincixd09/go-utils"
 	"github.com/gookit/color"
 )
 
@@ -18,7 +18,7 @@ func DeleteVersion() {
 
 	color.Info.Prompt("Delete Java version")
 
-	err := u.RunCommandWithOutput("lsd", "/opt/java")
+	err := helps.RunCommandWithOutput("lsd", "/opt/java")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
@@ -31,19 +31,19 @@ func DeleteVersion() {
 	javac := pathR + "/javac"
 	jar := pathR + "/jar"
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--remove", "java", java)
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--remove", "java", java)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--remove", "javac", javac)
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--remove", "javac", javac)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--remove", "jar", jar)
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--remove", "jar", jar)
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
@@ -58,7 +58,7 @@ func DeleteVersion() {
 		color.Info.Tips("Ej. jdk-21")
 		fmt.Scanln(&path)
 		pathR = "/opt/java/" + path
-		err = u.RunCommandInteractive("sudo", "rm", "-rf", pathR)
+		err = helps.RunCommandInteractive("sudo", "rm", "-rf", pathR)
 		if err != nil {
 			color.Error.Println("Error: ", err)
 			return

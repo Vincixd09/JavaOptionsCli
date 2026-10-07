@@ -1,9 +1,9 @@
 package commands
 
 import (
+	"JavaOptionsCli/internal/helps"
 	"fmt"
 
-	u "github.com/Vincixd09/go-utils"
 	"github.com/gookit/color"
 )
 
@@ -12,19 +12,19 @@ func ChangeVersion() {
 
 	color.Info.Prompt("Showing the options")
 
-	err := u.RunCommandInteractive("sudo", "update-alternatives", "--config", "java")
+	err := helps.RunCommandInteractive("sudo", "update-alternatives", "--config", "java")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--config", "javac")
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--config", "javac")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--config", "jar")
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--config", "jar")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return

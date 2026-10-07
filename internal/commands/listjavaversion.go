@@ -1,9 +1,9 @@
 package commands
 
 import (
+	"JavaOptionsCli/internal/helps"
 	"fmt"
 
-	u "github.com/Vincixd09/go-utils"
 	"github.com/gookit/color"
 )
 
@@ -13,7 +13,7 @@ func ListVersion() {
 	color.Info.Prompt("Showing versions")
 
 	color.Info.Prompt("Showing Java versions")
-	err := u.RunCommandInteractive("update-alternatives", "--list", "java")
+	err := helps.RunCommandInteractive("update-alternatives", "--list", "java")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
@@ -22,14 +22,14 @@ func ListVersion() {
 	fmt.Print("\n")
 
 	color.Info.Prompt("Showing javac versions")
-	err = u.RunCommandInteractive("update-alternatives", "--list", "javac")
+	err = helps.RunCommandInteractive("update-alternatives", "--list", "javac")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
 	color.Info.Prompt("Showing jar versions")
-	err = u.RunCommandInteractive("update-alternatives", "--list", "jar")
+	err = helps.RunCommandInteractive("update-alternatives", "--list", "jar")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return

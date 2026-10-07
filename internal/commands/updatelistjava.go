@@ -1,10 +1,10 @@
 package commands
 
 import (
+	"JavaOptionsCli/internal/helps"
 	"fmt"
 	"time"
 
-	u "github.com/Vincixd09/go-utils"
 	"github.com/gookit/color"
 )
 
@@ -13,19 +13,19 @@ func UpdateList() {
 
 	color.Info.Prompt("Updating system alternatives")
 
-	err := u.RunCommandInteractive("sudo", "update-alternatives", "--auto", "java")
+	err := helps.RunCommandInteractive("sudo", "update-alternatives", "--auto", "java")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--auto", "javac")
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--auto", "javac")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
 	}
 
-	err = u.RunCommandInteractive("sudo", "update-alternatives", "--auto", "jar")
+	err = helps.RunCommandInteractive("sudo", "update-alternatives", "--auto", "jar")
 	if err != nil {
 		color.Error.Println("Error: ", err)
 		return
